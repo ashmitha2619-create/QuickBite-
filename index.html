@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>QuickBite </title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+
+        <!-- ===== Header and navigation (Flexbox) ===== -->
+        <header class="site-header">
+            <a class="brand" href="#top">QuickBite</a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+            <ul>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#restaurants">Restaurants</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#cart">Cart</a></li>
+            </ul>
+            </nav>
+
+            <form class="search" role="search" action="#">
+            <label class="visually-hidden" for="search">Search restaurants or dishes</label>
+            <input type="search" id="search" name="q" placeholder="Search restaurants or dishes">
+            <button type="submit">Search</button>
+            </form>
+        </header>
+
+        <main id="top">
+
+            <section class="hero" aria-labelledby="hero-title">
+            <h1 id="hero-title">Hungry? Order from the best restaurants near you</h1>
+            <p>Fast delivery, fresh food and hundreds of menus to explore.</p>
+            </section>
+
+            <!-- ===== Food categories (Flexbox chips) ===== -->
+            <section id="categories" aria-labelledby="categories-title">
+            <h2 id="categories-title">Food categories</h2>
+            <ul class="chips">
+                <li><a href="#restaurants">🍕 Pizza</a></li>
+                <li><a href="#restaurants">🍔 Burgers</a></li>
+                <li><a href="#restaurants">🍜 Noodles</a></li>
+                <li><a href="#restaurants">🍛 Biryani</a></li>
+                <li><a href="#restaurants">🥗 Healthy</a></li>
+                <li><a href="#restaurants">🍰 Desserts</a></li>
+            </ul>
+            </section>
+
+            <!-- ===== Restaurant listing (CSS Grid) ===== -->
+            <section id="restaurants" aria-labelledby="restaurants-title">
+            <h2 id="restaurants-title">Restaurants near you</h2>
+
+            <ul class="restaurant-grid">
+                <li class="card-wrap">
+                <article class="restaurant-card">
+                    <div class="card-image" aria-hidden="true">🍕</div>
+                    <div class="card-body">
+                    <h3>Napoli Pizza House</h3>
+                    <p class="cuisine">Italian, Pizza</p>
+                    <p class="meta"><span>★ 4.5</span><span>25 min</span><span>₹300 for two</span></p>
+                    <a class="button" href="#menu">View menu</a>
+                    </div>
+                </article>
+                </li>
+                <li class="card-wrap">
+                <article class="restaurant-card">
+                    <div class="card-image" aria-hidden="true">🍔</div>
+                    <div class="card-body">
+                    <h3>Burger Barn</h3>
+                    <p class="cuisine">American, Burgers</p>
+                    <p class="meta"><span>★ 4.3</span><span>20 min</span><span>₹250 for two</span></p>
+                    <a class="button" href="#menu">View menu</a>
+                    </div>
+                </article>
+                </li>
+                <li class="card-wrap">
+                <article class="restaurant-card">
+                    <div class="card-image" aria-hidden="true">🍛</div>
+                    <div class="card-body">
+                    <h3>Spice Route Biryani</h3>
+                    <p class="cuisine">Hyderabadi, Biryani</p>
+                    <p class="meta"><span>★ 4.6</span><span>35 min</span><span>₹400 for two</span></p>
+                    <a class="button" href="#menu">View menu</a>
+                    </div>
+                </article>
+                </li>
+                <li class="card-wrap">
+                <article class="restaurant-card">
+                    <div class="card-image" aria-hidden="true">🍜</div>
+                    <div class="card-body">
+                    <h3>Noodle Bowl</h3>
+                    <p class="cuisine">Chinese, Noodles</p>
+                    <p class="meta"><span>★ 4.2</span><span>30 min</span><span>₹280 for two</span></p>
+                    <a class="button" href="#menu">View menu</a>
+                    </div>
+                </article>
+                </li>
+                <li class="card-wrap">
+                <article class="restaurant-card">
+                    <div class="card-image" aria-hidden="true">🥗</div>
+                    <div class="card-body">
+                    <h3>Green Leaf Kitchen</h3>
+                    <p class="cuisine">Healthy, Salads</p>
+                    <p class="meta"><span>★ 4.4</span><span>25 min</span><span>₹350 for two</span></p>
+                    <a class="button" href="#menu">View menu</a>
+                    </div>
+                </article>
+                </li>
+                <li class="card-wrap">
+                <article class="restaurant-card">
+                    <div class="card-image" aria-hidden="true">🍰</div>
+                    <div class="card-body">
+                    <h3>Sweet Tooth Bakery</h3>
+                    <p class="cuisine">Desserts, Bakery</p>
+                    <p class="meta"><span>★ 4.7</span><span>15 min</span><span>₹200 for two</span></p>
+                    <a class="button" href="#menu">View menu</a>
+                    </div>
+                </article>
+                </li>
+            </ul>
+            </section>
+
+            <!-- ===== Sample menu ===== -->
+            <section id="menu" aria-labelledby="menu-title">
+            <h2 id="menu-title">Popular on the menu</h2>
+            <ul class="menu-list">
+                <li><span class="dish">Margherita Pizza</span><span class="price">₹249</span></li>
+                <li><span class="dish">Chicken Burger</span><span class="price">₹199</span></li>
+                <li><span class="dish">Hyderabadi Chicken Biryani</span><span class="price">₹329</span></li>
+                <li><span class="dish">Veg Hakka Noodles</span><span class="price">₹179</span></li>
+            </ul>
+            </section>
+
+        </main>
+
+        <footer class="site-footer" id="cart">
+            <p>&copy; 2026 QuickBite. Order food online.</p>
+        </footer>
+
+    </body>
+</html>

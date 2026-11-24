@@ -1,0 +1,356 @@
+
+:root {
+  --ink: #2b2118;        /* main text */
+  --bg: #fffaf3;         /* page background */
+  --surface: #ffffff;    /* cards */
+  --chili: #b82e1a;      /* main accent (white text passes contrast) */
+  --saffron: #ffb703;    /* highlights */
+  --line: #ead9c4;       /* borders */
+
+  --gap: clamp(1rem, 3vw, 1.75rem);   /* fluid spacing */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+}
+
+h1 { font-size: clamp(1.8rem, 6vw, 3rem); margin: 0 0 0.5rem; }
+h2 { font-size: clamp(1.4rem, 4vw, 1.9rem); margin: 0 0 1rem; }
+h3 { font-size: 1.15rem; margin: 0; }
+
+a {
+  color: var(--chili);
+}
+
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+main {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 var(--gap);
+}
+
+section {
+  margin-bottom: 2.5rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+
+/* ---------- 2. Header and navigation (Flexbox) ---------- */
+
+/* Mobile: items stack in a column */
+.site-header {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+  padding: 1rem var(--gap);
+  background: var(--chili);
+  color: #ffffff;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Menu links sit in a row and wrap if there is no space */
+.main-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-nav a {
+  display: inline-block;
+  padding: 0.4rem 0;
+  color: #ffffff;
+}
+
+/* Search box: input grows, button stays its own size */
+.search {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.6rem;
+  font: inherit;
+  border: 2px solid transparent;
+  border-radius: 0.4rem;
+}
+
+.search button {
+  padding: 0.6rem 1rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--saffron);
+  border: 0;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+
+/* ---------- 3. Hero and categories ---------- */
+
+.hero {
+  padding: 2rem 0 1rem;
+}
+
+.hero p {
+  max-width: 36rem;
+}
+
+/* Category chips: a wrapping row */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chips a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--ink);
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 2rem;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.chips a:hover {
+  background: var(--saffron);
+  border-color: var(--saffron);
+}
+
+
+/* ---------- 4. Restaurant grid and cards (CSS Grid) ---------- */
+
+/* Mobile: one column.
+   Tablet and desktop columns are added in the media queries below. */
+.restaurant-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Each grid item is a "container" so the card can react to its own width */
+.card-wrap {
+  container-type: inline-size;
+}
+
+.restaurant-card {
+  display: flex;
+  flex-direction: row;          /* narrow card: image left, text right */
+  height: 100%;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover and keyboard-focus effect */
+.restaurant-card:hover,
+.restaurant-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(43, 33, 24, 0.15);
+}
+
+.card-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 6rem;
+  font-size: 3rem;
+  background: #fde8c8;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.4rem;
+  padding: 1rem;
+}
+
+.cuisine {
+  margin: 0;
+  color: #5c4a3a;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.button {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: var(--chili);
+  border-radius: 0.4rem;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: var(--ink);
+}
+
+/* Container query: when the card itself is wide (23rem+),
+   stack it: big image on top, text underneath */
+@container (min-width: 23rem) {
+  .restaurant-card {
+    flex-direction: column;
+  }
+
+  .card-image {
+    width: auto;
+    min-height: 7rem;
+    font-size: 3.5rem;
+  }
+}
+
+
+/* ---------- 5. Menu list (Flexbox) ---------- */
+
+.menu-list {
+  max-width: 36rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Dish name on the left, price pushed to the right */
+.menu-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px dashed var(--line);
+}
+
+.price {
+  font-weight: 700;
+}
+
+
+/* ---------- 6. Footer ---------- */
+
+.site-footer {
+  padding: 1.5rem var(--gap);
+  text-align: center;
+  color: #ffffff;
+  background: var(--ink);
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+
+/* ---------- 7. Tablet (640px and up) ---------- */
+
+@media (min-width: 40rem) {
+
+  /* Header: brand and nav on one row, search on the next */
+  .site-header {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .search {
+    flex: 1 1 100%;
+  }
+
+  /* Two restaurant cards per row */
+  .restaurant-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ---------- 8. Desktop (1024px and up) ---------- */
+
+@media (min-width: 64rem) {
+
+  /* Header: brand, nav and search all on one row */
+  .site-header {
+    flex-wrap: nowrap;
+  }
+
+  .main-nav {
+    flex: 1;
+    margin-left: 2rem;
+  }
+
+  .search {
+    flex: 0 1 22rem;
+  }
+
+  /* Three restaurant cards per row */
+  .restaurant-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* ---------- Respect reduced-motion setting ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .restaurant-card,
+  .chips a {
+    transition: none;
+  }
+
+  .restaurant-card:hover,
+  .restaurant-card:focus-within {
+    transform: none;
+  }
+}
